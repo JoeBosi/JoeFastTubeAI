@@ -3,6 +3,14 @@
 All notable changes to JoeFastTubeAI are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.1.1] — 2026-06-02
+
+### Fixed
+- **Single slash-menu entry.** Converted from a hybrid plugin+skill into a **pure loose
+  skill**: removed `.claude-plugin/` and `commands/`, which made the skill appear **twice**
+  in the `/` menu (`JoeFastTubeAI` and the plugin-namespaced `JoeFastTubeAI:JoeFastTubeAI`).
+  It now registers once as `/JoeFastTubeAI`. Installation is git-clone-only (no marketplace).
+
 ## [1.1.0] — 2026-06-02
 
 ### Added

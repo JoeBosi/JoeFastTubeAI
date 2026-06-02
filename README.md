@@ -33,23 +33,19 @@ summarize. Unlike a throwaway approach, **it caches per video and saves every ru
 
 ## Install
 
-### As a loose skill (simplest)
+JoeFastTubeAI is a **loose skill**: clone this repo into your Claude Code skills folder,
+keeping the destination folder named `JoeFastTubeAI` (the folder name becomes the
+`/JoeFastTubeAI` command):
 
 ```bash
 git clone https://github.com/JoeBosi/JoeFastTubeAISkill.git ~/.claude/skills/JoeFastTubeAI
 ```
 
-Restart Claude Code. Type `/JoeFastTubeAI` — the command appears in the menu.
+Then **restart Claude Code** (`/exit` and reopen). Type `/JoeFastTubeAI` — it shows up in
+the slash menu as a single entry.
 
-### As a plugin (marketplace)
-
-This repo ships `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json`,
-so it can also be added as a plugin marketplace:
-
-```
-/plugin marketplace add JoeBosi/JoeFastTubeAISkill
-/plugin install JoeFastTubeAI@joefasttube-ai
-```
+> **Update later:** `git -C ~/.claude/skills/JoeFastTubeAI pull`, then restart.
+> **Uninstall:** `rm -rf ~/.claude/skills/JoeFastTubeAI`, then restart.
 
 ---
 
