@@ -3,6 +3,26 @@
 All notable changes to JoeFastTubeAI are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [Unreleased] — Roadmap
+
+### Planned
+- **Auto-zoom (two-pass).** After the panoramic pass, read the transcript to find
+  the moments where the narrator points at something on screen ("look here", "this
+  level", "this chart"), then run a focused, higher-density second pass on exactly
+  those segments. _(internal tag: "Problema 2")_
+- **Full HD frames.** Optional `1920px` capture for readable on-screen text in the
+  auto-zoom pass. _(internal tag: "Problema 2")_
+- **Chunked Whisper.** Split the extracted audio so caption-less videos longer than
+  ~50 min stop hitting the 25 MB Whisper upload limit. _(internal tag: "Problema 1")_
+
+## [1.0.1] — 2026-06-02
+
+### Fixed
+- **macOS SSL verification (`CERTIFICATE_VERIFY_FAILED`).** python.org Python builds
+  ship without an initialized CA bundle, so every Whisper call (Groq/OpenAI) failed
+  before authentication. The HTTPS context now uses the `certifi` bundle when
+  available, falling back to common system bundles (`/etc/ssl/cert.pem`, Homebrew's).
+
 ## [1.0.0] — 2026-06-02
 
 First release. Fork of the upstream [`watch`](https://github.com/bradautomates/claude-video)

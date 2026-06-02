@@ -133,6 +133,23 @@ URL ──► yt-dlp ──► video + captions          (cached per video-id)
 
 ---
 
+## Troubleshooting
+
+- **Whisper fails with `CERTIFICATE_VERIFY_FAILED` on macOS.** Fixed in **1.0.1**: the
+  skill now builds its HTTPS context from the `certifi` CA bundle automatically. If you
+  still hit it, run `pip install certifi` (or the Python *"Install Certificates.command"*).
+- **"No transcript available" on a video without captions.** Add a Groq (preferred) or
+  OpenAI key — see [Configuration](#configuration). Without a key, caption-less videos
+  come back frames-only.
+
+## Roadmap / Known limitations
+
+- **Auto-zoom (planned).** A second, focused pass that reads the transcript, finds the
+  moments the narrator points at something, and re-captures those segments densely in
+  **Full HD** for readable on-screen detail.
+- **Long caption-less videos (~>50 min).** The Whisper API caps uploads at 25 MB
+  (≈50 min of compressed audio). Chunked transcription is on the roadmap.
+
 ## Credits & License
 
 Forked from **[bradautomates/claude-video](https://github.com/bradautomates/claude-video)**
