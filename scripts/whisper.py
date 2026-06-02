@@ -146,6 +146,28 @@ MAX_429_RETRIES = 2
 RETRY_BASE_DELAY = 2.0
 
 
+def _ssl_context() -> ssl.SSLContext:
+    """Build an SSL context with a usable CA bundle.
+
+    macOS python.org builds frequently ship without an initialized CA bundle
+    (the "Install Certificates.command" step is never run), which makes every
+    HTTPS request fail with CERTIFICATE_VERIFY_FAILED. Prefer the certifi bundle
+    when available, then fall back to common system bundles, then the default.
+    """
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except Exception:
+        pass
+    for candidate in ("/etc/ssl/cert.pem", "/opt/homebrew/etc/ca-certificates/cert.pem"):
+        if os.path.exists(candidate):
+            try:
+                return ssl.create_default_context(cafile=candidate)
+            except Exception:
+                continue
+    return ssl.create_default_context()
+
+
 def _post_whisper(endpoint: str, api_key: str, model: str, audio_path: Path) -> dict:
     fields = {
         "model": model,
@@ -162,7 +184,7 @@ def _post_whisper(endpoint: str, api_key: str, model: str, audio_path: Path) -> 
         "User-Agent": "watch-skill/1.0 (+claude-code; python-urllib)",
     }
 
-    context = ssl.create_default_context()
+    context = _ssl_context()
     rate_limit_hits = 0
     last_exc: Exception | None = None
     last_detail = ""
