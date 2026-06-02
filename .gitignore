@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets / config (never commit API keys)
+.env
+
+# Runtime output produced by the skill (in case it is ever run from inside the repo).
+# Real output is written to ./JoeFastTubeAI/<video-id>/ in the user's *project* dir,
+# but ignore stray downloaded media + extracted frames just in case.
+*.mp4
+*.webm
+*.mkv
+*.mov
+*.m4a
+*.mp3
+*.vtt
+*.info.json
+frames/

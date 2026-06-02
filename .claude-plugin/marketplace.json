@@ -1,0 +1,21 @@
+{
+  "name": "joefasttube-ai",
+  "metadata": {
+    "description": "JoeFastTubeAI — give Claude a video input with caching and saved results. Downloads, extracts frames, transcribes, answers, and persists every run to disk."
+  },
+  "owner": {
+    "name": "Giuseppe Bosi",
+    "email": "bosi.giuseppe@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "JoeFastTubeAI",
+      "description": "Watch a video (URL or local path) with per-video caching and persistent output. Downloads with yt-dlp, extracts frames with ffmpeg, transcribes via captions or Whisper, and saves prompt.md + result.md + frames per request.",
+      "author": {
+        "name": "Giuseppe Bosi"
+      },
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}
